@@ -1,0 +1,26 @@
+run:
+  repID: ["A","B"]
+  stepID: pb_mpi
+  modelID: M0GTR
+  -np: 2
+  -T: "Mammalia-39sp-CAT_unrooted_withoutsupport.tre"
+  -mutsel: ""
+  -catfix: "uniform"
+  -s: ""
+  -x:
+    every: "1"
+    until: "1"
+  -uni: ""
+test:
+  repID: ["A","B"]
+  stepID: pb_mpi
+  modelID: M0GTR
+  -np: 2
+  -T: "Mammalia-39sp-CAT_unrooted_withoutsupport.tre"
+  -mutsel: ""
+  -catfix: "uniform"
+  -s: ""
+  -x:
+    every: "1"
+    until: "1"
+  -uni: ""
