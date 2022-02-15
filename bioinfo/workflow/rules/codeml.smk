@@ -11,10 +11,8 @@ configfile: ROOT_dir + "/configs/configs.yaml"
 
 
 
-
-
 rule fasta2phylip:
-    input: 
+    input:
         script=ROOT_dir+"/scripts/data_prep.py",
         fasta=ROOT_dir+"/data/{geneID}.fasta"
     output: ROOT_dir+"/outputs/data/{geneID}.phylip"
@@ -297,51 +295,6 @@ rule run_codeml_M7HKY_cmd:
 rule run_codeml_M8HKY_cmd:
     input:ROOT_dir+"/outputs/codeml_m8hky/{geneID}-M8HKY-{omega}-{CpG}-{draw}-{repID}-1_0/codeml.sh"
     output:ROOT_dir+"/outputs/codeml_m8hky/{geneID}-M8HKY-{omega}-{CpG}-{draw}-{repID}-1_0/codeml"
-    shell:
-        """
-        echo bash {input}
-        bash {input}
-        """
-
-
-
-rule generate_M0HKY_simu_cmd:
-    input:
-        phylip=ROOT_dir+"/outputs/data_prep/{geneID}.phylip",
-        mcmc=ROOT_dir+"/outputs/step_1/{geneID}-M0GTR-{repID}.chain",
-    output:
-        sh=ROOT_dir+"/outputs/cabc_step_1/{geneID}-M0HKY-{repID}.sh",
-        conf=ROOT_dir+"/outputs/cabc_step_1/{geneID}-M0HKY-{repID}.conf"
-    params:
-        ss="'pwAC pwAG pwAT pwCG pwCT pwGT dinuc31CG dinuc31TG dinuc31CA nuc3A nuc3C nuc3G nuc3T pwAA'",
-        params="'chainID root lambda_CpG lambda_TBL lambda_omega nucsA nucsC nucsG nucsT nucrrAC nucrrAG nucrrAT nucrrCG nucrrCT nucrrGT'",
-        map="'Nsub Nsynsub dinucCGCA dinucCGTG dinucNSCGCA dinucNSCGTG dinucSCGCA dinucSCGTG gtnrAA gtnrAC gtnrAG gtnrAT gtnrCA gtnrCC gtnrCG gtnrCT gtnrGA gtnrGC gtnrGG gtnrGT gtnrTA gtnrTC gtnrTG gtnrTT'",
-        localparams="'-iscodon -code Universal -freeroot Echinops Procavia -rootlength 100 -freelambdaCpG -freelambdaTBL -freehky -freelambdaomega'",
-        model="CodonMutSelFinite",
-        nsimu="100000",
-        local=ROOT_dir,
-        docker="/data"
-    conda:
-        ROOT_dir+"/envs/env.yml"
-    shell:
-        """
-        python3 scripts/generate_M0M7HKY_simu_cmd.py \
-        --phylip={input.phylip} \
-        --mcmc={input.mcmc} \
-        --ss={params.ss} \
-        --map={params.map} \
-        --params={params.params} \
-        --localparams={params.localparams} \
-        --model={params.model} \
-        --nsimu={params.nsimu} \
-        --output={output.sh} \
-        --local={params.local} \
-        --docker={params.docker}
-        """
-
-rule run_M0HKY_simu_cmd:
-    input: ROOT_dir+"/outputs/cabc_step_1/{geneID}-M0HKY-{repID}.sh"
-    output: ROOT_dir+"/outputs/cabc_step_1/{geneID}-M0HKY-{repID}.simu"
     shell:
         """
         echo bash {input}

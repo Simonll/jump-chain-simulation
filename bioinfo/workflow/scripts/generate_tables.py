@@ -1,3 +1,4 @@
+import argparse
 import glob
 import os
 from typing import Any
@@ -340,3 +341,99 @@ def generate_supplements_M7M8HKY_codeml_LRT(
             print("something wrong with %s" % str(e))
             return False
     return True
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(
+        description="argument", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+
+    parser.add_argument(
+        "--input_M0HKY_pb_mpi_dir",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--metadata_M0HKY_pb_mpi",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--input_M0HKY_codeml_dir",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--metadata_M0HKY_codeml",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--input_M7HKY_codeml_dir",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--metadata_M7HKY_codeml",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--input_M8HKY_codeml_dir",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--metadata_M8HKY_codeml",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--output_M0HKY_pb_mpi",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--output_M0HKY_codeml",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--output_M7HKY_codeml",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--output_M8HKY_codeml",
+        type=str,
+        required=True,
+    )
+
+    args = parser.parse_args()
+
+    generate_tables(
+        input_M0HKY_pb_mpi_dir=args.input_M0HKY_pb_mpi_dir,
+        metadata_M0HKY_pb_mpi=args.metadata_M0HKY_pb_mpi,
+        input_M0HKY_codeml_dir=args.input_M0HKY_codeml_dir,
+        metadata_M0HKY_codeml=args.metadata_M0HKY_codeml,
+        input_M7HKY_codeml_dir=args.input_M7HKY_codeml_dir,
+        metadata_M7HKY_codeml=args.metadata_M7HKY_codeml,
+        input_M8HKY_codeml_dir=args.input_M8HKY_codeml_dir,
+        metadata_M8HKY_codeml=args.metadata_M8HKY_codeml,
+        output_M0HKY_pb_mpi=args.output_M0HKY_pb_mpi,
+        output_M0HKY_codeml=args.output_M0HKY_codeml,
+        output_M7HKY_codeml=args.output_M7HKY_codeml,
+        output_M8HKY_codeml=args.output_M8HKY_codeml,
+    )

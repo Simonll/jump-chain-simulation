@@ -1,3 +1,4 @@
+import argparse
 import glob
 import os
 from typing import Dict
@@ -554,3 +555,63 @@ def generate_figure_1(
         )
         return False
     return True
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(
+        description="argument", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+
+    parser.add_argument(
+        "--input_M0HKY_dir",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--metadata_M0HKY",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--input_M7HKY_dir",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--metadata_M7HKY",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--input_M8HKY_dir",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--metadata_M8HKY",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--output",
+        type=str,
+        required=True,
+    )
+    args = parser.parse_args()
+
+    generate_figure_1(
+        input_M0HKY_dir=args.input_M0HKY_dir,
+        metadata_M0HKY=args.metadata_M0HKY,
+        input_M7HKY_dir=args.input_M7HKY_dir,
+        metadata_M7HKY=args.metadata_M7HKY,
+        input_M8HKY_dir=args.input_M8HKY_dir,
+        metadata_M8HKY=args.metadata_M8HKY,
+        output=args.output,
+    )

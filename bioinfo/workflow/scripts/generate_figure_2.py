@@ -1,3 +1,4 @@
+import argparse
 from typing import List
 
 import matplotlib.pyplot as plt
@@ -156,3 +157,42 @@ def generate_figure_2(
         return False
 
     return True
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(
+        description="argument", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+
+    parser.add_argument(
+        "--input_under",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--input_center",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--input_over",
+        type=str,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--output",
+        type=str,
+        required=True,
+    )
+    args = parser.parse_args()
+
+    generate_figure_2(
+        input_under=args.input_under,
+        input_center=args.metadata_M0HKY,
+        input_over=args.input_over,
+        output=args.output,
+    )
