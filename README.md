@@ -20,6 +20,29 @@ docker build --build-arg USER_NAME=$(whoami) --build-arg USER_ID=$(id -u ${USER}
 snakemake -n
 snakemake -j 10 --use-conda
 ```
+
+## How to activate conda environment
+1. from jump-chain-simulation/ create the conda environment
+```bash
+conda env create --file env.yml
+```
+2. and activate conda environment
+```bash
+conda activate jump_chain_simulation
+```
+
+## How I use jupyter-lab notebooks on linux based system
+1. from the jump-chain-simulation/bioinfo/workflow/notebooks/ directory, launch jupyter-lab to background with:
+```bash
+echo "jupyter lab --no-browser --port=8888" \& | bash
+```
+note that port will be skip if already in use and conda environment need to be activated first \
+\
+2. can now launch port forwarding channel from your laptop to access the notebooks using localhost definition, noting that jupyter-lab port and localhost port forwarding need to match.
+```bash
+ssh -N -f -L localhost:8888:localhost:8888 user@server
+```
+
 ## How to cite
 
 BibTex Citation:

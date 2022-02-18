@@ -1,6 +1,4 @@
 geneID: ["WDR91","GPAM","STRIP1","CSRP2BP","HSPA4","MEP1A","MYB","PDE6A","SEMA3D","TNFAIP3"]
-data_prep:
-  configs: "/configs/data_prep.yaml"
 pb_mpi:
   configs: "/configs/pb_mpi.yaml"
 test:

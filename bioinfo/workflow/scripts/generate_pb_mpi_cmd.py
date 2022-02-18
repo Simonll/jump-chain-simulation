@@ -11,7 +11,7 @@ def generate_mapping(local, docker, input) -> str:
     return s
 
 
-def wrapper_generate_pb_mpi_cmd(phylip, tree, output, local, docker) -> str:
+def wrapper_generate_pb_mpi_cmd(phylip, tree, model, output, local, docker) -> str:
 
     os.makedirs(
         os.path.dirname(output) + "/",
@@ -22,8 +22,7 @@ def wrapper_generate_pb_mpi_cmd(phylip, tree, output, local, docker) -> str:
         "-np": str(4),
         "-d": generate_mapping(local=local, docker=docker, input=phylip),
         "-T": generate_mapping(local=local, docker=docker, input=tree),
-        "-mutsel": "",
-        "-catfix": "uniform",
+        model: "",
         "-s": "",
         "-x": "1 1000",
         "-uni": "",
@@ -64,6 +63,11 @@ if __name__ == "__main__":
         required=True,
     )
     parser.add_argument(
+        "--model",
+        type=str,
+        required=True,
+    )
+    parser.add_argument(
         "--output",
         type=str,
         required=True,
@@ -84,6 +88,7 @@ if __name__ == "__main__":
     wrapper_generate_pb_mpi_cmd(
         phylip=args.phylip,
         tree=args.tree,
+        model=args.model,
         output=args.output,
         local=args.local,
         docker=args.docker,
