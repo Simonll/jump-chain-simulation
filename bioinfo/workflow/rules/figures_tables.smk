@@ -10,8 +10,88 @@ if ROOT_dir not in sys.path:
 configfile: ROOT_dir + "/configs/configs.yaml"
 
 
+rule generate_figure_1:
+    input:
+        script=ROOT_dir+"/scripts/generate_figure_1.py",
+        input_M0HKY_codeml_dir=ROOT_dir+"/outputs/codeml/m0hky/",
+        input_M7HKY_codeml_dir=ROOT_dir+"/outputs/codeml/m7hky/",
+        input_M8HKY_codeml_dir=ROOT_dir+"/outputs/codeml/m8hky/",
+    output:
+        ROOT_dir+"/reports/figure_1.png"
+    conda:
+        ROOT_dir+"/envs/env.yml"
+    shell:
+        """
+        python3 {input.script} \
+        --input_M0HKY_dir={input.input_M0HKY_codeml_dir} \
+        --input_M7HKY_dir={input.input_M7HKY_codeml_dir} \
+        --input_M8HKY_dir={input.input_M8HKY_codeml_dir} \
+        --output={output} \
+        """
 
-rule generate_tableSup1_4:
+
+rule generate_figure_2:
+
+    input:
+        script=ROOT_dir+"/scripts/generate_figure_2.py",
+        input_under=ROOT_dir+"/outputs/cabc/step_3/{geneID}-M0HKY-{omega}-{CpG}-{draw}-{repID}-post.tsv,
+        input_center=ROOT_dir+"/outputs/cabc/step_3/{geneID}-M0HKY-{omega}-{CpG}-{draw}-{repID}-post.tsv,
+        input_over=ROOT_dir+"/outputs/cabc/step_3/{geneID}-M0HKY-{omega}-{CpG}-{draw}-{repID}-post.tsv,
+    output:
+        ROOT_dir+"/reports/figure_2.png"
+    conda:
+        ROOT_dir+"/envs/env.yml"
+    shell:
+        """
+        python3 {input.script} \
+        --input_under={input.input_under} \
+        --input_center={input.input_center} \
+        --input_over={input.input_over} \
+        --outout={output}
+        """
+
+
+rule generate_tableSup1:
+    input:
+        script=ROOT_dir+"/scripts/generate_M0HKY_pb_modified_sup.py",
+        input_dir=ROOT_dir+"/outputs/modified_chain_m0hky/"
+    params:
+        pattern=""
+        metadata="{}"
+    output:
+        ROOT_dir+"/reports/tableSup1.csv"
+    conda:
+        ROOT_dir+"/envs/env.yml"
+    shell:
+        """
+        python3 {input.script} \
+        --input_dir={input.input_dir} \
+        --pattern={params.pattern} \
+        --metadata={params.metadata} \
+        --outout={output}
+        """
+
+rule generate_tableSup2:
+    input:
+        script=ROOT_dir+"/scripts/generate_M0HKY_pb_modified_sup.py",
+        input_dir=ROOT_dir+"/outputs/modified_chain_m7hky/"
+    params:
+        pattern=""
+        metadata="{}"
+    output:
+        ROOT_dir+"/reports/tableSup2.csv"
+    conda:
+        ROOT_dir+"/envs/env.yml"
+    shell:
+        """
+        python3 {input.script} \
+        --input_dir={input.input_dir} \
+        --pattern={params.pattern} \
+        --metadata={params.metadata} \
+        --outout={output}
+        """
+
+rule generate_tableSup3_6:
 
     input:
         script=ROOT_dir+"/scripts/generate_codeml_sup.py",
@@ -48,48 +128,43 @@ rule generate_tableSup1_4:
 
 
 
-rule generate_figure_1:
+rule generate_supplements_CABC:
     input:
-        script=ROOT_dir+"/scripts/generate_figure_1.py",
-        input_M0HKY_dir=ROOT_dir+"/outputs/",
-        metadata_M0HKY=ROOT_dir+"/outputs/",
-        input_M7HKY_dir=ROOT_dir+"/outputs/",
-        metadata_M7HKY=ROOT_dir+"/outputs/",
-        input_M8HKY_dir=ROOT_dir+"/outputs/",
-        metadata_M8HKY=ROOT_dir+"/outputs/",
-        output=ROOT_dir+"/reports/"
+        script=ROOT_dir+"/scripts/generate_cabc_sup.py",
+        input_dir=ROOT_dir+"/outputs/cabc/step_3/"
+    params:
+        pattern="*-post.tsv",
+        metadata="{}",
     output:
-        ROOT_dir+"/reports/figure_1.png"
+        ROOT_dir + "/reports/tableSup7.csv",
     conda:
         ROOT_dir+"/envs/env.yml"
     shell:
         """
         python3 {input.script} \
-        --input_M0HKY_dir={input.input_M0HKY_dir} \
-        --metadata_M0HKY={input.metadata_M0HKY} \
-        --input_M7HKY_dir= \
-        --input_M8HKY_dir= \
-        --input_M8HKY_dir= \
-        --metadata_M8HKY= \
-        --output={output} \
+        --input_dir={input.input_dir} \
+        --pattern={params.pattern} \
+        --metadata={params.metadata} \
+        --outout={output}
         """
 
 
-rule generate_figure_2:
+rule generate_supplements_M0GTR_pb_mpi:
     input:
-        script=ROOT_dir+"/scripts/generate_figure_2.py",
-        input_under=ROOT_dir+"/outputs/",
-        input_center=ROOT_dir+"/outputs/",
-        input_over=ROOT_dir+"/outputs/",
+        script=ROOT_dir+"/scripts/generate_M0GTR_pb_mpi_sup.py",
+        input_dir=ROOT_dir+"/outputs/pbmpi_m0gtr/"
+    params:
+        pattern="*-chain",
+        metadata="{}",
     output:
-        ROOT_dir+"/reports/figure_2.png"
+        ROOT_dir + "/reports/tableSup8.csv",
     conda:
         ROOT_dir+"/envs/env.yml"
     shell:
         """
         python3 {input.script} \
-        --input_under={input.input_under} \
-        --input_center={input.input_center} \
-        --input_over={input.input_over} \
+        --input_dir={input.input_dir} \
+        --pattern={params.pattern} \
+        --metadata={params.metadata} \
         --outout={output}
         """

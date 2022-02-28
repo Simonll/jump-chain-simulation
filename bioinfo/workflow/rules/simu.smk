@@ -150,7 +150,8 @@ rule generate_M7HKY_mixed:
         script=ROOT_dir+"/scripts/generate_M7HKY_mixed.py",
         phylip=ROOT_dir+"/outputs/data/{geneID}.phylip",
         mcmc=ROOT_dir+"/outputs/pbmpi_m0gtr/{geneID}-M0GTR-{repID}.chain",
-    output:ROOT_dir+"/outputs/modified_chain_m7hky/{geneID}-M7HKY-{omega_mix}-{draw}-{repID}.chain"
+    output:
+        ROOT_dir+"/outputs/modified_chain_m7hky/{geneID}-M7HKY-{omega_mix}-{draw}-{repID}.chain"
     params:
         burnin=600,
     conda:

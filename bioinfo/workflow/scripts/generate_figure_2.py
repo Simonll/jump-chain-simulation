@@ -1,20 +1,17 @@
 import argparse
-from typing import List
+import os
+import sys
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-colorblind8: List[str] = [
-    "#999999",
-    "#E69F00",
-    "#56B4E9",
-    "#009E73",
-    "#F0E442",
-    "#0072B2",
-    "#D55E00",
-    "#CC79A7",
-]
+ROOT_dir: str = Path(os.path.dirname(__file__)).parent.__str__()
+if ROOT_dir not in sys.path:
+    sys.path.append(ROOT_dir)
+
+from scripts import colorblind8
 
 
 def generate_figure_2(
@@ -192,7 +189,7 @@ if __name__ == "__main__":
 
     generate_figure_2(
         input_under=args.input_under,
-        input_center=args.metadata_M0HKY,
+        input_center=args.input_center,
         input_over=args.input_over,
         output=args.output,
     )

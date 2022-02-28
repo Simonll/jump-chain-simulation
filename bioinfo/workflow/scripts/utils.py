@@ -13,7 +13,7 @@ def quantile(
     return (round(quantile_inf_v, 3), round(quantile_sup_v, 3))
 
 
-def tl_compute(list_of_trees) -> List[float]:
+def tl_compute(list_of_trees: List[str]) -> List[float]:
     list_of_tl: List[float] = []
     for t in list_of_trees:
         sum_ = 0
