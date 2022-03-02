@@ -31,6 +31,11 @@ rule generate_figure_1:
 
 
 rule generate_figure_2:
+    """
+    STRIP1 was used to show under-estimation of lambda parameter
+    GPAM was used to show close centered estimation of lambda parameter
+    WDR91 was used to show over-estimation of lambda parameter
+    """
 
     input:
         script=ROOT_dir+"/scripts/generate_figure_2.py",
