@@ -1,6 +1,6 @@
 # jump-chain simulation algorithm 
 
-Jump-chain simulation algorithm, inspire from Gillespie 1977, enable to sample subsitutional histories from complexe phylogenetic models, including site-interdependent models. The timing of the substitutions (dwelltime) is sample following a Poisson process, and nature of the substitutions is sample from the substitution process itself.
+Jump-chain simulation algorithm, inspired from Gillespie 1977, enables to sample subsitutional histories from complex phylogenetic models, including site-interdependent models. The timing of the substitutions (dwelltime) is sampled following a Poisson process, and the nature of the substitutions is sampled from the substitution process itself.
 
 ## How to install docker
 - https://docs.docker.com/get-docker/
