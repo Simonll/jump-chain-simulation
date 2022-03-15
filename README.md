@@ -1,4 +1,6 @@
-# jump-chain-simulation
+# jump-chain simulation algorithm 
+
+Jump-chain simulation algorithm, inspire from Gillespie 1977, enable to sample subsitutional histories from complexe phylogenetic models, including site-interdependent models. The timing of the substitutions (dwelltime) is sample following a Poisson process, and nature of the substitutions is sample from the substitution process itself.
 
 ## How to install docker
 - https://docs.docker.com/get-docker/
@@ -31,7 +33,7 @@ conda env create --file env.yml
 conda activate jump_chain_simulation
 ```
 
-## How I use jupyter-lab notebooks on linux based system
+## How to use jupyter-lab notebooks on linux based system
 1. from the jump-chain-simulation/bioinfo/workflow/notebooks/ directory, launch jupyter-lab to background with:
 ```bash
 echo "jupyter lab --no-browser --port=8888" \& | bash
@@ -60,4 +62,19 @@ BibTex Citation:
     eprint = {},
 }
 ```
-------------------------
+
+## References
+```
+@article{Gillespie1977,
+  doi = {10.1021/j100540a008},
+  year = {1977},
+  month = dec,
+  publisher = {American Chemical Society ({ACS})},
+  volume = {81},
+  number = {25},
+  pages = {2340--2361},
+  author = {Gillespie, D T},
+  title = {{Exact stochastic simulation of coupled chemical reactions}},
+  journal = {The Journal of Physical Chemistry}
+}
+```
