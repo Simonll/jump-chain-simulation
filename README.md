@@ -22,6 +22,7 @@ docker build --build-arg USER_NAME=$(whoami) --build-arg USER_ID=$(id -u ${USER}
 snakemake -n
 snakemake -j 10 --use-conda
 ```
+Use -s to specify snakmake file for activating different aspects of the bioinfo workflow {simu.smk, cabc.smk, codeml.smk, figures_tables.smk}. Some aspects are better run on a cluster, so some human manipulations are still expected depending of the computation environment.
 
 ## How to activate conda environment
 1. from jump-chain-simulation/ create the conda environment
