@@ -104,10 +104,10 @@ rule generate_tableSup3_6:
         input_M7HKY_codeml_dir=ROOT_dir+"/outputs/",
         input_M8HKY_codeml_dir=ROOT_dir+"/outputs/",
     output:
-        output_M0HKY_codeml=ROOT_dir+"/reports/tableSup1.csv",
-        output_M7HKY_codeml=ROOT_dir+"/reports/tableSup2.csv",
-        output_M8HKY_codeml=ROOT_dir+"/reports/tableSup3.csv",
-        output_M7M8_LRT=ROOT_dir+"/reports/tableSup4.csv",
+        output_M0HKY_codeml=ROOT_dir+"/reports/tableSup3.csv",
+        output_M7HKY_codeml=ROOT_dir+"/reports/tableSup4.csv",
+        output_M8HKY_codeml=ROOT_dir+"/reports/tableSup5.csv",
+        output_M7M8_LRT=ROOT_dir+"/reports/tableSup6.csv",
     params:
         metadata_M0HKY_codeml="",
         metadata_M7HKY_codeml="",
