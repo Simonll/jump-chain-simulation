@@ -8,7 +8,7 @@ if ROOT_dir not in sys.path:
     sys.path.append(ROOT_dir)
 
 configfile: ROOT_dir + "/configs/configs.yaml"
-GENEID = ["CSRP2BP"]#config["geneID"]
+GENEID = config["geneID"]
 REPID = ["A"]#["A","B"]
 DRAW = [i for i in range(0, 100)][0:1]
 OMEGA = [0.2, 0.5, 0.8]
