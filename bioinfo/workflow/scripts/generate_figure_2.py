@@ -140,6 +140,7 @@ def generate_figure_2(
 
         axes.set_xlabel(r"$\lambda$")
         axes.set_yticks([])
+        axes.set_ylabel("density")
         fig.tight_layout()
         for pos in ["right", "top", "left"]:  #'bottom'
             fig.gca().spines[pos].set_visible(False)

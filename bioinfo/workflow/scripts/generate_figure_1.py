@@ -65,7 +65,7 @@ def generate_figure_1(
     else:
         try:
             k = 0
-            labels = ["A", "B", "C", "D", "E", "F"]
+            labels = ["a", "b", "c", "d", "e", "f"]
             for g in LIST_OF_GENES:
                 if g in ["WDR91"]:
 
@@ -141,7 +141,8 @@ def generate_figure_1(
                         )
                         axes[k].set_xlabel(r"$\omega$")
                         axes[k].set_yticks([])
-
+                        if k == 0 : 
+                            axes[k].set_ylabel("density")
                         # if k == 0:
                         #     ticks = [0.10, 0.2, 0.3]
                         #     axes[k].set_xticks(ticks=ticks)
