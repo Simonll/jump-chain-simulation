@@ -139,10 +139,10 @@ def generate_figure_2(
         axes.axvline(8, color="black", linewidth=2, linestyle="dashed")
 
         axes.set_xlabel(r"$\lambda$")
-        axes.set_yticks([])
-        axes.set_ylabel("density")
+        # axes.set_yticks([])
+        axes.set_ylabel("Density")
         fig.tight_layout()
-        for pos in ["right", "top", "left"]:  #'bottom'
+        for pos in ["right", "top"]:  #'bottom', "left"
             fig.gca().spines[pos].set_visible(False)
         fig.savefig(
             output,

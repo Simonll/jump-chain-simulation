@@ -140,9 +140,9 @@ def generate_figure_1(
                             w, color="black", linestyle="dashed", linewidth=2
                         )
                         axes[k].set_xlabel(r"$\omega$")
-                        axes[k].set_yticks([])
-                        if k == 0 : 
-                            axes[k].set_ylabel("density")
+                        # axes[k].set_yticks([])
+                        if k == 0:
+                            axes[k].set_ylabel("Density")
                         # if k == 0:
                         #     ticks = [0.10, 0.2, 0.3]
                         #     axes[k].set_xticks(ticks=ticks)
@@ -290,7 +290,7 @@ def generate_figure_1(
                 axes[k].set_xticklabels(labels=[1, 2, 4, 8])
                 k += 1
             fig.subplots_adjust(top=0.99, bottom=0.01, hspace=0.5, wspace=0.25)
-            # fig.tight_layout(pad=1, w_pad=1, h_pad=1.0)
+            fig.tight_layout(pad=1, w_pad=1, h_pad=1.0)
             fig.savefig(
                 output,
                 dpi=300,
