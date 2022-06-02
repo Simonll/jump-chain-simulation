@@ -52,15 +52,12 @@ BibTex Citation:
 ```
 @article{,
     author = {Laurin-Lemay, Simon and Dickson, Kassandra and Rodrigue, Nicolas},
-    title = "{Jump-chain simulation of Markov substitution processes over phylogenies}",
-    journal = {},
-    year = {},
-    month = {},
-    abstract = "{}",
-    issn = {},
-    doi = {},
-    url = {},
-    eprint = {},
+    title = {{Jump-Chain Simulation of Markov Substitution Processes Over Phylogenies}},
+    journal = {Journal of Molecular Evolution},
+    year = {2022},
+    month = {June},
+    doi = {10.1007/s00239-022-10058-0},
+    url = {https://doi.org/10.1007/s00239-022-10058-0},
 }
 ```
 
